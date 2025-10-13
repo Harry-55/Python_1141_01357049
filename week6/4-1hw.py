@@ -1,17 +1,16 @@
-def cola_recursive(a: int, borrow: bool = True) -> int:
-    if a < 3:
-        return 1 if borrow and a == 2 else 0
-
-    new = a // 3  
-    remain = a % 3 + new  
-    return new + cola_recursive(remain, borrow)
-
-
+def GCD(a, b):
+    if b == 0:
+        return a
+    return GCD(b, a%b)
+def solve(a):
+    ans = 0
+    for i in range(1, a):
+        for j in range(i+1, a+1):
+            ans += GCD(i, j)
+    return ans
 while True:
-    try:
-        n = int(input())
-    except EOFError:
+    a = int(input())
+    if a == 0:
         break
+    print(solve(a))
 
-    total = n + cola_recursive(n, borrow=True)
-    print(total)
