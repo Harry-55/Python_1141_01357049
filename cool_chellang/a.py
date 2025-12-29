@@ -1,8 +1,8 @@
 n, m = list(map(int,(input().split(" "))))
+arr = []
+cin = input().split(" ")
+arr = list(map(int, cin))
 while m:
-    arr = []
-    cin = input().split(" ")
-    arr = list(map(int, cin))
     target = 0
     ans = int(input())
     for i in range(n):

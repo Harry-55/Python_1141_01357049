@@ -1,21 +1,25 @@
 import numpy as np
 from scipy import linalg
 import time
+np.random.seed(0)
+tmp_a = np.random.rand(200, 200)
+tmp_b = np.random.rand(200, 200)
+A = list()
+B = list()
+A = tmp_a.tolist()
+B = tmp_b.tolist()
 
-A = np.random.rand(200, 200)
-B = np.random.rand(200, 200)
 
 
 def manual_matmul(A, B):    
-    C = np.zeros((200, 200))
-
+    C = [[ 0 for i in range(200)] for j in range(200)]
     start_manual = time.perf_counter() 
     for i in range(200):
         for j in range(200):
             s = 0.0
             for k in range(200):
-                s += A[i, k] * B[k, j]
-            C[i, j] = s
+                s += A[i][k] * B[k][j]
+            C[i][j] = s
     manual_time = time.perf_counter() - start_manual
     return C, manual_time
 
